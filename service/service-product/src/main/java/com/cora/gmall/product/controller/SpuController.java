@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.cora.gmall.common.result.Result;
 import com.cora.gmall.model.product.BaseSaleAttr;
+import com.cora.gmall.model.product.BaseTrademark;
 import com.cora.gmall.model.product.SpuInfo;
 import com.cora.gmall.product.service.SpuService;
 import com.sun.org.apache.regexp.internal.RE;
@@ -40,5 +41,17 @@ public class SpuController {
         List<BaseSaleAttr> baseSaleAttrs = spuService.baseSaleAttrList();
         return Result.ok(baseSaleAttrs);
          
+    }
+
+    @RequestMapping("baseTrademark/getTrademarkList")
+    public Result getTrademarkList() {
+        List<BaseTrademark> baseTrademarks = spuService.getTrademarkList();
+
+        return Result.ok(baseTrademarks);
+    }
+
+    @RequestMapping("saveSpuInfo")
+    public Result saveSpuInfo(@RequestBody SpuInfo spuInfo) {
+        return Result.ok();
     }
 }

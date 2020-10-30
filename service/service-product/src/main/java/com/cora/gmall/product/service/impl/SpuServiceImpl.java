@@ -26,6 +26,8 @@ public class SpuServiceImpl implements SpuService {
 
     @Autowired
     BaseSaleAttrMapper baseSaleAttrMapper;
+    @Autowired
+    BaseTrademarkMapper baseTrademarkMapper;
 
     @Override
     public IPage<SpuInfo> index(Page pageParam, SpuInfo spuInfo) {
@@ -39,5 +41,11 @@ public class SpuServiceImpl implements SpuService {
     public List<BaseSaleAttr> baseSaleAttrList() {
 
         return baseSaleAttrMapper.selectList(null);
+    }
+
+    @Override
+    public List<BaseTrademark> getTrademarkList() {
+
+        return baseTrademarkMapper.selectList(null);
     }
 }
