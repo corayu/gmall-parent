@@ -8,18 +8,20 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 /**
  * @author Cora
  */
-@Controller
+@RestController
 @RequestMapping("admin/product")
 @CrossOrigin
 public class AttrInfoController {
     @Autowired
     AttrInfoService attrInfoService;
+
 
     @RequestMapping("attrInfoList/{category1Id}/{category2Id}/{category3Id}")
     public Result attrInfoList(@PathVariable("category1Id") String category1Id, @PathVariable("category2Id") String category2Id, @PathVariable("category3Id") String category3Id) {
