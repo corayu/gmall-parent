@@ -13,7 +13,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 @MapperScan("com.cora.gmall.product.mapper")
 @Component("com.cora.gmall")
-@EnableSwagger2
 public class ProductApplication {
 
     public static void main(String[] args) {

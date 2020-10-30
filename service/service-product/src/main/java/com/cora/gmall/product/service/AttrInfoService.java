@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface AttrInfoService {
     List<BaseAttrInfo> attrInfoList(String category1Id, String category2Id, String category3Id);
+
+    void saveAttrInfo(BaseAttrInfo baseAttrInfo);
 }

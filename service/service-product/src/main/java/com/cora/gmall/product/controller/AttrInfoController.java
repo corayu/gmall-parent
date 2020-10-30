@@ -5,10 +5,8 @@ import com.cora.gmall.model.product.BaseAttrInfo;
 import com.cora.gmall.product.service.AttrInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.List;
 
@@ -18,6 +16,7 @@ import java.util.List;
 @RestController
 @RequestMapping("admin/product")
 @CrossOrigin
+@EnableSwagger2
 public class AttrInfoController {
     @Autowired
     AttrInfoService attrInfoService;
@@ -30,4 +29,9 @@ public class AttrInfoController {
         return Result.ok(baseAttrInfos);
     }
 
+    @RequestMapping("saveAttrInfo")
+    public Result saveAttrInfo(@RequestBody BaseAttrInfo baseAttrInfo) {
+        attrInfoService.saveAttrInfo(baseAttrInfo);
+        return Result.ok();
+    }
 }
