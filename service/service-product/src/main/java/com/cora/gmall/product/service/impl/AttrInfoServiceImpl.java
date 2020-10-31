@@ -39,18 +39,28 @@ public class AttrInfoServiceImpl implements AttrInfoService {
     public void saveAttrInfo(BaseAttrInfo baseAttrInfo) {
         Long attrId = baseAttrInfo.getId();
 
+        // 什么情况下 是添加，什么情况下是更新，修改 根据baseAttrInfo 的Id
         if (null!=attrId && attrId > 0) {
+            // 修改数据
+            // baseAttrValue 平台属性值
+            // 修改：通过先删除{baseAttrValue}，在新增的方式！
+            // 删除条件：baseAttrValue.attrId = baseAttrInfo.id
+
             baseAttrInfoMapper.updateById(baseAttrInfo);
             QueryWrapper<BaseAttrValue> queryWrapper = new QueryWrapper<>();
             queryWrapper.eq("attr_id", attrId);
             baseAttrValueMapper.delete(queryWrapper);
         } else {
+            // 新增
+            // baseAttrInfo 插入数据
             baseAttrInfoMapper.insert(baseAttrInfo);
             attrId = baseAttrInfo.getId();
         }
+        // 获取页面传递过来的所有平台属性值数据
         List<BaseAttrValue> attrValueList = baseAttrInfo.getAttrValueList();
         if (null!=attrValueList && attrValueList.size() > 0) {
             for (BaseAttrValue baseAttrValue : attrValueList) {
+                // 获取平台属性Id 给attrId
                 baseAttrValue.setAttrId(attrId);
                 baseAttrValueMapper.insert(baseAttrValue);
             }

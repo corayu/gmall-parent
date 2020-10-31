@@ -29,6 +29,11 @@ public class AttrInfoController {
         return Result.ok(baseAttrInfos);
     }
 
+    /**
+     * 保存平台属性方法
+     * @param baseAttrInfo
+     * @return
+     */
     @RequestMapping("saveAttrInfo")
     public Result saveAttrInfo(@RequestBody BaseAttrInfo baseAttrInfo) {
         attrInfoService.saveAttrInfo(baseAttrInfo);
